@@ -2,14 +2,14 @@ package com.example.ca_todo.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.ViewModel
+import android.view.LayoutInflater
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.ca_todo.R
+import com.example.ca_todo.domain.ShopItem
 
 class MainActivity : AppCompatActivity() {
-
-    private var count = 0;
 
     private lateinit var viewModel: MainViewModel
 
@@ -20,12 +20,8 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         viewModel.shopList.observe(this) {
-            Log.e("TAG", it.toString())
-            if (count == 0) {
-                count++
-                val item = it[0]
-                viewModel.changeEnabledState(item)
-            }
+
         }
     }
+
 }
