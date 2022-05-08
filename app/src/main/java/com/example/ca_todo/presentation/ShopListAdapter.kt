@@ -20,9 +20,12 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ShopItemViewHolder>
             notifyDataSetChanged()
         }
 
+    var onShopItemLongClickListener: ((ShopItem) -> Unit)? = null
+
+    var onShopItemClickListener : ((ShopItem) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopItemViewHolder {
 
-        Log.d("TAG", "onCreateViewHolder, count:${++count}")
         val layout = when(viewType) {
 
             VIEW_TYPE_ENABLED -> R.layout.item_shop_enabled
@@ -36,9 +39,18 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ShopItemViewHolder>
     }
 
     override fun onBindViewHolder(viewHolder: ShopItemViewHolder, position: Int) {
+
+        Log.d("TAG", "onBindViewHolder, count:${++count}")
+
         val shopItem = shopList[position]
 
+        viewHolder.itemView.setOnClickListener {
+            onShopItemClickListener?.invoke(shopItem)
+            true
+        }
+
         viewHolder.itemView.setOnLongClickListener {
+            onShopItemLongClickListener?.invoke(shopItem)
             true
         }
 
@@ -70,6 +82,6 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ShopItemViewHolder>
         const val VIEW_TYPE_ENABLED = 100
         const val VIEW_TYPE_DISABLED = 101
 
-        const val MAX_POOL_SIZE = 30
+        const val MAX_POOL_SIZE = 5
     }
 }
