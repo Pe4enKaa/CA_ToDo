@@ -1,5 +1,4 @@
 package com.example.ca_todo.presentation
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
+
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ca_todo.R
 import com.example.ca_todo.presentation.ShopItemActivity.Companion.newIntentAddItem
@@ -28,14 +29,32 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        shopItemContainer = findViewById(R.id.shop_item_fragment_container)
+        initViews()
+
         setupRecyclerView()
 
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewProvider()
 
+        dataInsert()
+
+        addItem()
+    }
+
+    private fun initViews() {
+        shopItemContainer = findViewById(R.id.shop_item_fragment_container)
+    }
+
+    private fun viewProvider() {
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+    }
+
+    private fun dataInsert() {
         viewModel.shopList.observe(this) {
             shopListAdapter.submitList(it)
         }
+    }
+
+    private fun addItem() {
         val buttonAddItem = findViewById<FloatingActionButton>(R.id.button_add_shop_item)
         buttonAddItem.setOnClickListener {
             if (isOnePaneMode()) {
@@ -131,6 +150,7 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
 
         }
     }
+
 }
 
 

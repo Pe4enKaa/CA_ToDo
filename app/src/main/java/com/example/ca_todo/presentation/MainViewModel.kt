@@ -1,13 +1,22 @@
 package com.example.ca_todo.presentation
 
-import androidx.lifecycle.MutableLiveData
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.ca_todo.data.ShopListRepositoryImpl
-import com.example.ca_todo.domain.*
+import com.example.ca_todo.domain.DeleteShopItem
+import com.example.ca_todo.domain.EditShopItem
+import com.example.ca_todo.domain.GetShopList
+import com.example.ca_todo.domain.ShopItem
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = ShopListRepositoryImpl
+    private val repository = ShopListRepositoryImpl(application)
 
     private val getShopList = GetShopList(repository)
 
@@ -18,11 +27,16 @@ class MainViewModel : ViewModel() {
     val shopList = getShopList.getShopList()
 
     fun deleteShopList(shopItem : ShopItem) {
-        deleteShopList.deleteShopItem(shopItem)
+        viewModelScope.launch {
+            deleteShopList.deleteShopItem(shopItem)
+        }
     }
 
     fun changeEnabledState(shopItem: ShopItem) {
-        val newItem = shopItem.copy(enabled = !shopItem.enabled)
-        editShopList.editShopItem(newItem)
+        viewModelScope.launch {
+            val newItem = shopItem.copy(enabled = !shopItem.enabled)
+            editShopList.editShopItem(newItem)
+        }
+
     }
 }

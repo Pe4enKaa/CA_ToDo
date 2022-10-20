@@ -1,11 +1,9 @@
 package com.example.ca_todo.presentation
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.ca_todo.R
 import com.example.ca_todo.domain.ShopItem
 import com.google.android.material.textfield.TextInputLayout
-import java.lang.RuntimeException
 
 class ShopItemFragment : Fragment() {
 
@@ -62,7 +59,7 @@ class ShopItemFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this)[ShopItemViewModel::class.java]
+        viewProvider()
 
         initViews(view)
 
@@ -71,6 +68,10 @@ class ShopItemFragment : Fragment() {
         launchRightMode()
 
         observeViewModel()
+    }
+
+    private fun viewProvider() {
+        viewModel = ViewModelProvider(this)[ShopItemViewModel::class.java]
     }
 
     private fun observeViewModel() {
