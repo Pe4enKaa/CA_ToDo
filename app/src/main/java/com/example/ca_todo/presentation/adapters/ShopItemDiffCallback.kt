@@ -1,4 +1,4 @@
-package com.example.ca_todo.presentation
+package com.example.ca_todo.presentation.adapters
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.ca_todo.domain.ShopItem

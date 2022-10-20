@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ca_todo.R
 import com.example.ca_todo.presentation.ShopItemActivity.Companion.newIntentAddItem
 import com.example.ca_todo.presentation.ShopItemActivity.Companion.newIntentEditItem
+import com.example.ca_todo.presentation.adapters.ShopListAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {

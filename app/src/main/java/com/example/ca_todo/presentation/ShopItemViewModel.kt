@@ -2,14 +2,11 @@ package com.example.ca_todo.presentation
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.ca_todo.data.ShopListRepositoryImpl
+import com.example.ca_todo.data.repository.ShopListRepositoryImpl
 import com.example.ca_todo.domain.AddShopItem
 import com.example.ca_todo.domain.EditShopItem
 import com.example.ca_todo.domain.GetShopItem
 import com.example.ca_todo.domain.ShopItem
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import java.lang.Exception
 

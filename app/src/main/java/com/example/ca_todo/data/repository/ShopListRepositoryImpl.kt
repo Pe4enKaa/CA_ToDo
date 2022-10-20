@@ -1,13 +1,12 @@
-package com.example.ca_todo.data
+package com.example.ca_todo.data.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.example.ca_todo.data.database.AppDatabase
+import com.example.ca_todo.data.mapper.ShopListMapper
 import com.example.ca_todo.domain.ShopItem
 import com.example.ca_todo.domain.ShopListRepository
-import kotlin.random.Random
 
 class ShopListRepositoryImpl(application: Application) : ShopListRepository {
 

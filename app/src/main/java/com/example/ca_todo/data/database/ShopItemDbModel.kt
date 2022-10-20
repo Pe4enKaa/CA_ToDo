@@ -1,4 +1,4 @@
-package com.example.ca_todo.data
+package com.example.ca_todo.data.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

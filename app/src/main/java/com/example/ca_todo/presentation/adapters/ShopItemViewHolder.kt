@@ -1,4 +1,4 @@
-package com.example.ca_todo.presentation
+package com.example.ca_todo.presentation.adapters
 
 import android.view.View
 import android.widget.TextView

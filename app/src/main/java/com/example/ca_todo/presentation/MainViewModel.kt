@@ -2,16 +2,12 @@ package com.example.ca_todo.presentation
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ca_todo.data.ShopListRepositoryImpl
+import com.example.ca_todo.data.repository.ShopListRepositoryImpl
 import com.example.ca_todo.domain.DeleteShopItem
 import com.example.ca_todo.domain.EditShopItem
 import com.example.ca_todo.domain.GetShopList
 import com.example.ca_todo.domain.ShopItem
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {

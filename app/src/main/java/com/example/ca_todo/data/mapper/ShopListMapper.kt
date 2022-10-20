@@ -1,5 +1,6 @@
-package com.example.ca_todo.data
+package com.example.ca_todo.data.mapper
 
+import com.example.ca_todo.data.database.ShopItemDbModel
 import com.example.ca_todo.domain.ShopItem
 
 class ShopListMapper {

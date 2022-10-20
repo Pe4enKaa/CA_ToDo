@@ -1,4 +1,4 @@
-package com.example.ca_todo.data
+package com.example.ca_todo.data.database
 
 import android.app.Application
 import androidx.room.Database
